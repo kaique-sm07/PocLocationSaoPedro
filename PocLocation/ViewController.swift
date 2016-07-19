@@ -11,7 +11,8 @@ import CoreLocation
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
 
-     let manager = CLLocationManager()
+    let manager = CLLocationManager()
+    let altimeter = Altimeter()
 
     @IBOutlet weak var label: UILabel!
     
@@ -20,7 +21,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         self.manager.delegate = self
         self.manager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         self.manager.distanceFilter = 1.0
-
+        self.altimeter.startAltitudeTracking()
         // Do any additional setup after loading the view, typically from a nib.
     }
 

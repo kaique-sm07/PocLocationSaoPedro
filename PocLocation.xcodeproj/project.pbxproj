@@ -13,6 +13,7 @@
 		30631CC81D351ACA00CF6753 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30631CC71D351ACA00CF6753 /* Assets.xcassets */; };
 		30631CCB1D351ACA00CF6753 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30631CC91D351ACA00CF6753 /* LaunchScreen.storyboard */; };
 		30631CD51D352A0C00CF6753 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30631CD41D352A0C00CF6753 /* CoreLocation.framework */; };
+		AE13E5A81D3E91700045E533 /* Altimeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE13E5A71D3E91700045E533 /* Altimeter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		30631CCA1D351ACA00CF6753 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		30631CCC1D351ACA00CF6753 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30631CD41D352A0C00CF6753 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		AE13E5A71D3E91700045E533 /* Altimeter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Altimeter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 			children = (
 				30631CC01D351ACA00CF6753 /* AppDelegate.swift */,
 				30631CC21D351ACA00CF6753 /* ViewController.swift */,
+				AE13E5A71D3E91700045E533 /* Altimeter.swift */,
 				30631CC41D351ACA00CF6753 /* Main.storyboard */,
 				30631CC71D351ACA00CF6753 /* Assets.xcassets */,
 				30631CC91D351ACA00CF6753 /* LaunchScreen.storyboard */,
@@ -141,6 +144,7 @@
 			files = (
 				30631CC31D351ACA00CF6753 /* ViewController.swift in Sources */,
 				30631CC11D351ACA00CF6753 /* AppDelegate.swift in Sources */,
+				AE13E5A81D3E91700045E533 /* Altimeter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
