@@ -26,9 +26,9 @@ class POCLogger: NSObject {
     var timer : NSTimer?
     
     var file = "data.igc"
+    var logText: String = ""
     
     func updateData(data: DataUpdate) {
-        
         if let altitude = data.altitudeData {
             altitudeData = altitude
         }
@@ -38,30 +38,44 @@ class POCLogger: NSObject {
         }
     }
     
-    func log() {
-        
-        let str = "Super long string here"
-        let filename = getDocumentsDirectory().stringByAppendingPathComponent(file)
-        
-        do {
-            try str.writeToFile(filename, atomically: true, encoding: NSUTF8StringEncoding)
-        } catch {
-            // failed to write file – bad permissions, bad filename, missing permissions, or more likely it can't be converted to the encoding
-        }
-    }
-    
     func getDocumentsDirectory() -> NSString {
         let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
         let documentsDirectory = paths[0]
         return documentsDirectory
     }
     
+    func log() {
+        logText = logText + "\nDADOS DE VOO"
+        
+        do {
+            try logText.writeToFile(getDocumentsDirectory().stringByAppendingPathComponent(file), atomically: true, encoding: NSUTF8StringEncoding)
+        } catch {
+            print("Não conseguiu escrever")
+        }
+    }
+    
+    func readBaseFile() {
+        let filePath = NSBundle.mainBundle().pathForResource("fly", ofType:"igc")
+        if let file = filePath {
+            
+            do {
+                logText = try String(contentsOfFile: file)
+                print(logText)
+            } catch {
+                print("No File")
+            }
+        }
+    }
+    
     func startLogging() {
+        logText = ""
+        readBaseFile()
         timer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: #selector(log), userInfo: nil, repeats: true)
     }
     
     func stopLoggin() {
         timer?.invalidate()
+        
     }
     
     
