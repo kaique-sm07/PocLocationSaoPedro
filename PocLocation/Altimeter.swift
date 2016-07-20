@@ -24,6 +24,10 @@ class Altimeter {
         
         altimeter.startRelativeAltitudeUpdatesToQueue(altimeterQueue) { (inData, error) in
             guard let data = inData else { print("Error: \(error?.localizedDescription)"); return }
+            
+            let dataUpdate = DataUpdate(locations: nil, altitudeData: data)
+            POCLogger.sharedInstance.updateData(dataUpdate)
+            
             print("Relative Altitude \(data.relativeAltitude.floatValue)  Pressure \(data.pressure.floatValue)  Timestamp \(data.timestamp)")
         }
         

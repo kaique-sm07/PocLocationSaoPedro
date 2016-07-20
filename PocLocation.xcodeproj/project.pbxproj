@@ -15,6 +15,8 @@
 		30631CCB1D351ACA00CF6753 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30631CC91D351ACA00CF6753 /* LaunchScreen.storyboard */; };
 		30631CD51D352A0C00CF6753 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30631CD41D352A0C00CF6753 /* CoreLocation.framework */; };
 		AE13E5A81D3E91700045E533 /* Altimeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE13E5A71D3E91700045E533 /* Altimeter.swift */; };
+		AE13E5AA1D3EB5860045E533 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE13E5A91D3EB5860045E533 /* Location.swift */; };
+		AE25E7D51D3FE4BB00A78034 /* POCLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE25E7D41D3FE4BB00A78034 /* POCLogger.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		30631CCC1D351ACA00CF6753 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30631CD41D352A0C00CF6753 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		AE13E5A71D3E91700045E533 /* Altimeter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Altimeter.swift; sourceTree = "<group>"; };
+		AE13E5A91D3EB5860045E533 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		AE25E7D41D3FE4BB00A78034 /* POCLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = POCLogger.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +74,8 @@
 				30631CC71D351ACA00CF6753 /* Assets.xcassets */,
 				30631CC91D351ACA00CF6753 /* LaunchScreen.storyboard */,
 				30631CCC1D351ACA00CF6753 /* Info.plist */,
+				AE13E5A91D3EB5860045E533 /* Location.swift */,
+				AE25E7D41D3FE4BB00A78034 /* POCLogger.swift */,
 			);
 			path = PocLocation;
 			sourceTree = "<group>";
@@ -148,6 +154,8 @@
 			files = (
 				30631CC31D351ACA00CF6753 /* ViewController.swift in Sources */,
 				30631CC11D351ACA00CF6753 /* AppDelegate.swift in Sources */,
+				AE25E7D51D3FE4BB00A78034 /* POCLogger.swift in Sources */,
+				AE13E5AA1D3EB5860045E533 /* Location.swift in Sources */,
 				AE13E5A81D3E91700045E533 /* Altimeter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
