@@ -22,6 +22,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         self.altimeter.startAltitudeTracking()
         self.locationManager.getlocationForUser()
         POCLogger.sharedInstance.startLogging()
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
 

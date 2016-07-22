@@ -47,6 +47,8 @@ class POCLogger: NSObject {
     func log() {
         logText = logText + "\nDADOS DE VOO"
         
+        print(getAltitude())
+        
         do {
             try logText.writeToFile(getDocumentsDirectory().stringByAppendingPathComponent(file), atomically: true, encoding: NSUTF8StringEncoding)
         } catch {
@@ -68,14 +70,26 @@ class POCLogger: NSObject {
     }
     
     func getDataToIgc() -> String {
+        
+        //let altitude = location?.altitude
+        
     
         let hours = NSCalendar.currentCalendar().component(.Hour, fromDate: NSDate())
         let minutes = NSCalendar.currentCalendar().component(.Minute, fromDate: NSDate())
         let seconds = NSCalendar.currentCalendar().component(.Second, fromDate: NSDate())
         let geomData = "B" + "\(numberToString(hours))" + "\(numberToString(minutes))" + "\(numberToString(seconds))" +
-                    "\(getLatLong())" + "A" //TODO: Falta altura
+                    "\(getLatLong())" + "A"
+        
         return geomData
         
+    }
+    
+    func getAltitude() -> String {
+        
+        let altitude = (288.15 * (-1 + pow((((altitudeData?.pressure.doubleValue)! * 10) / 1013.25), 1/5.2561))) / -0.0065
+        return altitude.description
+        
+    
     }
     
     func numberToString(number:Int) -> String {
