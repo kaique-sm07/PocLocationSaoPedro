@@ -21,7 +21,7 @@ class POCLogger: NSObject {
     
     static let sharedInstance = POCLogger()
     
-    var locations: CLLocation? = nil
+    var location: CLLocation? = nil
     var altitudeData: CMAltitudeData? = nil
     var timer : NSTimer?
     
@@ -34,7 +34,7 @@ class POCLogger: NSObject {
         }
         
         if let location = data.locations?.last {
-            locations = location
+            self.location = location
         }
     }
     
@@ -65,6 +65,73 @@ class POCLogger: NSObject {
                 print("No File")
             }
         }
+    }
+    
+    func getDataToIgc() -> String {
+    
+        let hours = NSCalendar.currentCalendar().component(.Hour, fromDate: NSDate())
+        let minutes = NSCalendar.currentCalendar().component(.Minute, fromDate: NSDate())
+        let seconds = NSCalendar.currentCalendar().component(.Second, fromDate: NSDate())
+        let geomData = "B" + "\(numberToString(hours))" + "\(numberToString(minutes))" + "\(numberToString(seconds))" +
+                    "\(getLatLong())" + "A" //TODO: Falta altura
+        return geomData
+        
+    }
+    
+    func numberToString(number:Int) -> String {
+        
+        var numberString = ""
+        if abs(number) < 10 {
+            numberString = "0" + String(abs(number))
+        } else {
+            numberString = String(abs(number))
+        }
+        
+        return numberString
+    
+    }
+    
+    func longToString(number:Int) -> String {
+        
+        var numberString = ""
+        if abs(number) < 10 {
+            numberString = "00" + String(abs(number))
+        } else if abs(number) > 9 && abs(number) < 100{
+            numberString = "0" + String(abs(number))
+        } else {
+            numberString = String(abs(number))
+        }
+        
+        return numberString
+        
+    }
+
+    //Funcao que retorna a string de latitude e longitude
+    func getLatLong() -> String {
+        let latitude = self.location?.coordinate.latitude
+        let longitude = self.location?.coordinate.latitude
+        
+        var latSeconds = Int(latitude! * 3600)
+        let latDegrees = latSeconds / 3600
+        let latDegreeString = numberToString(latDegrees)
+        latSeconds = abs(latSeconds % 3600)
+        let latMinutes = latSeconds / 60
+        latSeconds %= 60
+        var longSeconds = Int(longitude! * 3600)
+        let longDegrees = longSeconds / 3600
+        let longDegreeString = longToString(longDegrees)
+        longSeconds = abs(longSeconds % 3600)
+        let longMinutes = longSeconds / 60
+        longSeconds %= 60
+        return String(format:"%@%@%@%@%@%@%@%@",
+                      latDegreeString,
+                      numberToString(latMinutes),
+                      numberToString(latSeconds),
+                      {return latDegrees >= 0 ? "N" : "S"}(),
+                      longDegreeString,
+                      numberToString(longMinutes),
+                      numberToString(longSeconds),
+                      {return longDegrees >= 0 ? "E" : "W"}() )
     }
     
     func startLogging() {
