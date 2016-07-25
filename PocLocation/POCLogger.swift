@@ -15,6 +15,7 @@ struct DataUpdate {
     let altitudeData: CMAltitudeData?
 }
 
+
 class POCLogger: NSObject {
     
     private override init() {}
@@ -48,6 +49,7 @@ class POCLogger: NSObject {
         logText = logText + "\nDADOS DE VOO"
         
         print(getAltitude())
+        print(location?.altitude)
         
         do {
             try logText.writeToFile(getDocumentsDirectory().stringByAppendingPathComponent(file), atomically: true, encoding: NSUTF8StringEncoding)
@@ -77,19 +79,40 @@ class POCLogger: NSObject {
         let hours = NSCalendar.currentCalendar().component(.Hour, fromDate: NSDate())
         let minutes = NSCalendar.currentCalendar().component(.Minute, fromDate: NSDate())
         let seconds = NSCalendar.currentCalendar().component(.Second, fromDate: NSDate())
+        let altitudeBarometer = altitudeToString(Int(getAltitude()))
+        let altitudeGps = altitudeToString(Int((self.location?.altitude)!))
         let geomData = "B" + "\(numberToString(hours))" + "\(numberToString(minutes))" + "\(numberToString(seconds))" +
-                    "\(getLatLong())" + "A"
+                    "\(getLatLong())" + "A" + altitudeBarometer + altitudeGps
         
         return geomData
         
     }
     
-    func getAltitude() -> String {
+    func getAltitude() -> Double {
         
         let altitude = (288.15 * (-1 + pow((((altitudeData?.pressure.doubleValue)! * 10) / 1013.25), 1/5.2561))) / -0.0065
-        return altitude.description
+        return altitude
         
     
+    }
+    
+    func altitudeToString(number:Int) -> String {
+        
+        var numberString = ""
+        if abs(number) < 10 {
+            numberString = "0000" + String(abs(number))
+        } else if abs(number) > 9 && abs(number) < 100{
+            numberString = "000" + String(abs(number))
+        } else if abs(number) > 99 && abs(number) < 1000{
+            numberString = "00" + String(abs(number))
+        } else if abs(number) > 999 && abs(number) < 10000{
+            numberString = "0" + String(abs(number))
+        } else {
+            numberString = String(abs(number))
+        }
+        
+        return numberString
+        
     }
     
     func numberToString(number:Int) -> String {
