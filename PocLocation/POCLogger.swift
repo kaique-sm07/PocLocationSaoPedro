@@ -46,7 +46,7 @@ class POCLogger: NSObject {
     }
     
     func log() {
-        logText = logText + "\nDADOS DE VOO"
+        logText = logText + "\n" + getDataToIgc()
         
         print(getAltitude())
         print(location?.altitude)
