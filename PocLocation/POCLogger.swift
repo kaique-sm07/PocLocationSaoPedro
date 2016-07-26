@@ -97,23 +97,19 @@ class POCLogger: NSObject {
     }
     
     func altitudeToString(number:Int) -> String {
-        
-        var numberString = ""
-        if abs(number) < 10 {
-            numberString = "0000" + String(abs(number))
-        } else if abs(number) > 9 && abs(number) < 100{
-            numberString = "000" + String(abs(number))
-        } else if abs(number) > 99 && abs(number) < 1000{
-            numberString = "00" + String(abs(number))
-        } else if abs(number) > 999 && abs(number) < 10000{
-            numberString = "0" + String(abs(number))
-        } else {
-            numberString = String(abs(number))
-        }
-        
-        return numberString
+        return String(format: "%00000d", abs(number))
         
     }
+	
+	func latToString(degree: Int, _ min: Int, _ isPositive: Bool) -> String
+	{
+		return String(format: "%00d%00000d", degree, min) + (isPositive ? "N" : "S")
+	}
+	
+	func longToString(degree: Int, _ min: Int, _ isPositive: Bool) -> String
+	{
+		return String(format: "%000d%00000d", degree, min) + (isPositive ? "E" : "W")
+	}
     
     func numberToString(number:Int) -> String {
         
@@ -127,21 +123,6 @@ class POCLogger: NSObject {
         return numberString
     
     }
-    
-    func longToString(number:Int) -> String {
-        
-        var numberString = ""
-        if abs(number) < 10 {
-            numberString = "00" + String(abs(number))
-        } else if abs(number) > 9 && abs(number) < 100{
-            numberString = "0" + String(abs(number))
-        } else {
-            numberString = String(abs(number))
-        }
-        
-        return numberString
-        
-    }
 
     //Funcao que retorna a string de latitude e longitude
     func getLatLong() -> String {
@@ -153,18 +134,13 @@ class POCLogger: NSObject {
         
         let latDegree = Int(abs(latitude!))
         let latMinutes = Int((abs(latitude!) - Double(latDegree)) * 60000)
-
-        
+		
         let longDegrees = Int(abs(longitude!))
-        
         let longMinutes = Int((abs(longitude!) - Double(longDegrees)) * 60000)
-        return String(format:"%@%@%@%@%@%@",
-                      numberToString(latDegree),
-                      numberToString(latMinutes),
-                      {return latitude >= 0 ? "N" : "S"}(),
-                      numberToString(longDegrees),
-                      numberToString(longMinutes),
-                      {return longitude >= 0 ? "E" : "W"}() )
+		
+        return String(format:"%s%s",
+                      latToString(latDegree, latMinutes, latitude >= 0),
+                      longToString(longDegrees, longMinutes, longitude >= 0))
     }
     
     func startLogging() {
