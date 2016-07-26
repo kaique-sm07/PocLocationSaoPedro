@@ -97,18 +97,18 @@ class POCLogger: NSObject {
     }
     
     func altitudeToString(number:Int) -> String {
-        return String(format: "%00000d", abs(number))
+        return String(format: "%05d", abs(number))
         
     }
 	
 	func latToString(degree: Int, _ min: Int, _ isPositive: Bool) -> String
 	{
-		return String(format: "%00d%00000d", degree, min) + (isPositive ? "N" : "S")
+		return String(format: "%02d%05d", degree, min) + (isPositive ? "N" : "S")
 	}
 	
 	func longToString(degree: Int, _ min: Int, _ isPositive: Bool) -> String
 	{
-		return String(format: "%000d%00000d", degree, min) + (isPositive ? "E" : "W")
+		return String(format: "%03d%05d", degree, min) + (isPositive ? "E" : "W")
 	}
     
     func numberToString(number:Int) -> String {
