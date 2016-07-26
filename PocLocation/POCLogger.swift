@@ -146,29 +146,25 @@ class POCLogger: NSObject {
     //Funcao que retorna a string de latitude e longitude
     func getLatLong() -> String {
         let latitude = self.location?.coordinate.latitude
-        let longitude = self.location?.coordinate.latitude
+        let longitude = self.location?.coordinate.longitude
         
-        var latSeconds = Int(latitude! * 3600)
-        let latDegrees = latSeconds / 3600
-        let latDegreeString = numberToString(latDegrees)
-        latSeconds = abs(latSeconds % 3600)
-        let latMinutes = latSeconds / 60
-        latSeconds %= 60
-        var longSeconds = Int(longitude! * 3600)
-        let longDegrees = longSeconds / 3600
-        let longDegreeString = longToString(longDegrees)
-        longSeconds = abs(longSeconds % 3600)
-        let longMinutes = longSeconds / 60
-        longSeconds %= 60
-        return String(format:"%@%@%@%@%@%@%@%@",
-                      latDegreeString,
+        print(latitude)
+        print(longitude)
+        
+        let latDegree = Int(abs(latitude!))
+        let latMinutes = Int((abs(latitude!) - Double(latDegree)) * 60000)
+
+        
+        let longDegrees = Int(abs(longitude!))
+        
+        let longMinutes = Int((abs(longitude!) - Double(longDegrees)) * 60000)
+        return String(format:"%@%@%@%@%@%@",
+                      numberToString(latDegree),
                       numberToString(latMinutes),
-                      numberToString(latSeconds),
-                      {return latDegrees >= 0 ? "N" : "S"}(),
-                      longDegreeString,
+                      {return latitude >= 0 ? "N" : "S"}(),
+                      numberToString(longDegrees),
                       numberToString(longMinutes),
-                      numberToString(longSeconds),
-                      {return longDegrees >= 0 ? "E" : "W"}() )
+                      {return longitude >= 0 ? "E" : "W"}() )
     }
     
     func startLogging() {

@@ -13,15 +13,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 
     let locationManager = Location()
     let altimeter = Altimeter()
-
-    @IBOutlet weak var label: UILabel!
+    
+    @IBOutlet weak var startButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.altimeter.startAltitudeTracking()
-        self.locationManager.getlocationForUser()
-        POCLogger.sharedInstance.startLogging()
         
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -36,5 +32,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     }
 
+    @IBAction func startTouch(sender: AnyObject) {
+        if startButton.titleLabel?.text == "Start" {
+            startButton.setTitle("Stop", forState: .Normal)
+            self.altimeter.startAltitudeTracking()
+            self.locationManager.getlocationForUser()
+            POCLogger.sharedInstance.startLogging()
+        } else {
+            startButton.setTitle("Start", forState: .Normal)
+            POCLogger.sharedInstance.stopLoggin()
+        }
+    }
 }
 
