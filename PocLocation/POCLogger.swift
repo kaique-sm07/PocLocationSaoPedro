@@ -81,9 +81,11 @@ class POCLogger: NSObject {
         let seconds = NSCalendar.currentCalendar().component(.Second, fromDate: NSDate())
         let altitudeBarometer = altitudeToString(Int(getAltitude()))
         let altitudeGps = altitudeToString(Int((self.location?.altitude)!))
-        let geomData = "B" + "\(numberToString(hours))" + "\(numberToString(minutes))" + "\(numberToString(seconds))" +
-                    "\(getLatLong())" + "A" + altitudeBarometer + altitudeGps
-        
+        let geomData = "B" + numberToString(hours) + numberToString(minutes) + numberToString(seconds) +
+                    getLatLong() + "A" + altitudeBarometer + altitudeGps
+		
+		print(geomData)
+		
         return geomData
         
     }
@@ -98,11 +100,11 @@ class POCLogger: NSObject {
     
     func altitudeToString(number:Int) -> String {
         return String(format: "%05d", abs(number))
-        
     }
 	
 	func latToString(degree: Int, _ min: Int, _ isPositive: Bool) -> String
 	{
+		
 		return String(format: "%02d%05d", degree, min) + (isPositive ? "N" : "S")
 	}
 	
@@ -112,35 +114,24 @@ class POCLogger: NSObject {
 	}
     
     func numberToString(number:Int) -> String {
-        
-        var numberString = ""
-        if abs(number) < 10 {
-            numberString = "0" + String(abs(number))
-        } else {
-            numberString = String(abs(number))
-        }
-        
-        return numberString
-    
+        return String(format: "%02d", abs(number))
     }
 
     //Funcao que retorna a string de latitude e longitude
     func getLatLong() -> String {
-        let latitude = self.location?.coordinate.latitude
-        let longitude = self.location?.coordinate.longitude
+        let latitude = self.location?.coordinate.latitude ?? 0
+        let longitude = self.location?.coordinate.longitude ?? 0
         
         print(latitude)
         print(longitude)
         
-        let latDegree = Int(abs(latitude!))
-        let latMinutes = Int((abs(latitude!) - Double(latDegree)) * 60000)
+        let latDegree = Int(abs(latitude))
+        let latMinutes = Int((abs(latitude) - Double(latDegree)) * 60000)
 		
-        let longDegrees = Int(abs(longitude!))
-        let longMinutes = Int((abs(longitude!) - Double(longDegrees)) * 60000)
+        let longDegrees = Int(abs(longitude))
+        let longMinutes = Int((abs(longitude) - Double(longDegrees)) * 60000)
 		
-        return String(format:"%s%s",
-                      latToString(latDegree, latMinutes, latitude >= 0),
-                      longToString(longDegrees, longMinutes, longitude >= 0))
+        return latToString(latDegree, latMinutes, latitude >= 0) + longToString(longDegrees, longMinutes, longitude >= 0)
     }
     
     func startLogging() {
