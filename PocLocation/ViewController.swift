@@ -38,6 +38,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             self.altimeter.startAltitudeTracking()
             self.locationManager.getlocationForUser()
             POCLogger.sharedInstance.startLogging()
+            
         } else {
             startButton.setTitle("Start", forState: .Normal)
             POCLogger.sharedInstance.stopLoggin()

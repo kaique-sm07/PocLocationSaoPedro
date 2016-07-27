@@ -64,11 +64,22 @@ class POCLogger: NSObject {
             
             do {
                 logText = try String(contentsOfFile: file)
+                logText = logText + "\n" + getInitialPoint()
                 print(logText)
             } catch {
                 print("No File")
             }
         }
+    }
+    
+    func getInitialPoint() -> String {
+    
+        let hours = NSCalendar.currentCalendar().component(.Hour, fromDate: NSDate())
+        let minutes = NSCalendar.currentCalendar().component(.Minute, fromDate: NSDate())
+        let seconds = NSCalendar.currentCalendar().component(.Second, fromDate: NSDate())
+        return "LLXNORIGIN" + numberToString(hours) + numberToString(minutes) + numberToString(seconds) +
+            getLatLong()
+    
     }
     
     func getDataToIgc() -> String {
