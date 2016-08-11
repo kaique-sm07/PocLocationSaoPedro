@@ -24,11 +24,20 @@
                                     <action selector="startTouch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4Gk-5X-1aX"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vke-Sb-5cT">
+                                <rect key="frame" x="236" y="345" width="128" height="30"/>
+                                <state key="normal" title="Test IGC validation"/>
+                                <connections>
+                                    <action selector="testIGCSign:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Sj-Qo-fAX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="vke-Sb-5cT" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="60" id="VLy-7L-SvC"/>
                             <constraint firstItem="qEE-Jv-5i3" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="WFA-cK-jXo"/>
                             <constraint firstItem="qEE-Jv-5i3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dQU-vg-wqb"/>
+                            <constraint firstItem="vke-Sb-5cT" firstAttribute="centerX" secondItem="qEE-Jv-5i3" secondAttribute="centerX" id="t6O-Qg-RZo"/>
                         </constraints>
                     </view>
                     <connections>

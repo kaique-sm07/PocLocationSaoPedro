@@ -14,6 +14,7 @@
 		30631CC81D351ACA00CF6753 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30631CC71D351ACA00CF6753 /* Assets.xcassets */; };
 		30631CCB1D351ACA00CF6753 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30631CC91D351ACA00CF6753 /* LaunchScreen.storyboard */; };
 		30631CD51D352A0C00CF6753 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30631CD41D352A0C00CF6753 /* CoreLocation.framework */; };
+		935B7E9C1D5CC5320033939B /* test.igc in Resources */ = {isa = PBXBuildFile; fileRef = 935B7E9B1D5CC5320033939B /* test.igc */; };
 		AE13E5A81D3E91700045E533 /* Altimeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE13E5A71D3E91700045E533 /* Altimeter.swift */; };
 		AE13E5AA1D3EB5860045E533 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE13E5A91D3EB5860045E533 /* Location.swift */; };
 		AE25E7D51D3FE4BB00A78034 /* POCLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE25E7D41D3FE4BB00A78034 /* POCLogger.swift */; };
@@ -29,6 +30,8 @@
 		30631CCA1D351ACA00CF6753 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		30631CCC1D351ACA00CF6753 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30631CD41D352A0C00CF6753 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		935B7E981D5CBDCF0033939B /* PocLocation-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PocLocation-Bridging-Header.h"; sourceTree = "<group>"; };
+		935B7E9B1D5CC5320033939B /* test.igc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.igc; sourceTree = "<group>"; };
 		AE13E5A71D3E91700045E533 /* Altimeter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Altimeter.swift; sourceTree = "<group>"; };
 		AE13E5A91D3EB5860045E533 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		AE25E7D41D3FE4BB00A78034 /* POCLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = POCLogger.swift; sourceTree = "<group>"; };
@@ -67,6 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				301324841D40017F003E7091 /* fly.igc */,
+				935B7E9B1D5CC5320033939B /* test.igc */,
 				30631CC01D351ACA00CF6753 /* AppDelegate.swift */,
 				30631CC21D351ACA00CF6753 /* ViewController.swift */,
 				AE13E5A71D3E91700045E533 /* Altimeter.swift */,
@@ -76,6 +80,7 @@
 				30631CCC1D351ACA00CF6753 /* Info.plist */,
 				AE13E5A91D3EB5860045E533 /* Location.swift */,
 				AE25E7D41D3FE4BB00A78034 /* POCLogger.swift */,
+				935B7E981D5CBDCF0033939B /* PocLocation-Bridging-Header.h */,
 			);
 			path = PocLocation;
 			sourceTree = "<group>";
@@ -147,6 +152,7 @@
 				30631CC81D351ACA00CF6753 /* Assets.xcassets in Resources */,
 				30631CC61D351ACA00CF6753 /* Main.storyboard in Resources */,
 				301324851D40017F003E7091 /* fly.igc in Resources */,
+				935B7E9C1D5CC5320033939B /* test.igc in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,10 +280,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = PocLocation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.bepid.PocLocation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PocLocation/PocLocation-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -286,10 +295,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = PocLocation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.bepid.PocLocation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PocLocation/PocLocation-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

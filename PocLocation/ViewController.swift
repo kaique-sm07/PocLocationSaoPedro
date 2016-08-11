@@ -31,6 +31,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         super.viewDidAppear(animated)
     
     }
+	
+	@IBAction func testIGCSign(sender: AnyObject)
+	{
+		POCLogger.sharedInstance.validateIGC()
+	}
 
     @IBAction func startTouch(sender: AnyObject) {
         if startButton.titleLabel?.text == "Start" {
