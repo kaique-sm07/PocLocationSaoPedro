@@ -14,7 +14,6 @@
 		30631CC81D351ACA00CF6753 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30631CC71D351ACA00CF6753 /* Assets.xcassets */; };
 		30631CCB1D351ACA00CF6753 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30631CC91D351ACA00CF6753 /* LaunchScreen.storyboard */; };
 		30631CD51D352A0C00CF6753 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30631CD41D352A0C00CF6753 /* CoreLocation.framework */; };
-		935B7E9C1D5CC5320033939B /* test.igc in Resources */ = {isa = PBXBuildFile; fileRef = 935B7E9B1D5CC5320033939B /* test.igc */; };
 		935B7E9E1D5DF7EF0033939B /* IGCValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935B7E9D1D5DF7EF0033939B /* IGCValidation.swift */; };
 		AE13E5A81D3E91700045E533 /* Altimeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE13E5A71D3E91700045E533 /* Altimeter.swift */; };
 		AE13E5AA1D3EB5860045E533 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE13E5A91D3EB5860045E533 /* Location.swift */; };
@@ -32,7 +31,6 @@
 		30631CCC1D351ACA00CF6753 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30631CD41D352A0C00CF6753 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		935B7E981D5CBDCF0033939B /* PocLocation-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PocLocation-Bridging-Header.h"; sourceTree = "<group>"; };
-		935B7E9B1D5CC5320033939B /* test.igc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.igc; sourceTree = "<group>"; };
 		935B7E9D1D5DF7EF0033939B /* IGCValidation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGCValidation.swift; sourceTree = "<group>"; };
 		AE13E5A71D3E91700045E533 /* Altimeter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Altimeter.swift; sourceTree = "<group>"; };
 		AE13E5A91D3EB5860045E533 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
@@ -72,7 +70,6 @@
 			isa = PBXGroup;
 			children = (
 				301324841D40017F003E7091 /* fly.igc */,
-				935B7E9B1D5CC5320033939B /* test.igc */,
 				30631CC01D351ACA00CF6753 /* AppDelegate.swift */,
 				30631CC21D351ACA00CF6753 /* ViewController.swift */,
 				AE13E5A71D3E91700045E533 /* Altimeter.swift */,
@@ -155,7 +152,6 @@
 				30631CC81D351ACA00CF6753 /* Assets.xcassets in Resources */,
 				30631CC61D351ACA00CF6753 /* Main.storyboard in Resources */,
 				301324851D40017F003E7091 /* fly.igc in Resources */,
-				935B7E9C1D5CC5320033939B /* test.igc in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

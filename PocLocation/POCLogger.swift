@@ -55,6 +55,7 @@ class POCLogger: NSObject {
             try logText.writeToFile(getDocumentsDirectory().stringByAppendingPathComponent(file), atomically: true, encoding: NSUTF8StringEncoding)
         } catch {
             print("Não conseguiu escrever")
+			print(error)
         }
     }
     
@@ -71,7 +72,21 @@ class POCLogger: NSObject {
             }
         }
     }
-    
+	
+	func setFileName()
+	{
+		let day = NSCalendar.currentCalendar().component(.Day, fromDate: NSDate())
+		let month = NSCalendar.currentCalendar().component(.Month, fromDate: NSDate())
+		let year = NSCalendar.currentCalendar().component(.Year, fromDate: NSDate())
+		let hours = NSCalendar.currentCalendar().component(.Hour, fromDate: NSDate())
+		let minutes = NSCalendar.currentCalendar().component(.Minute, fromDate: NSDate())
+		
+		let timeString = numberToString(hours) + ":" + numberToString(minutes)
+		let dayString = numberToString(day) + "-" + numberToString(month) + "-" + numberToString(year)
+		
+		file = timeString + "-" + dayString + ".igc"
+	}
+	
     func getInitialPoint() -> String {
     
         let hours = NSCalendar.currentCalendar().component(.Hour, fromDate: NSDate())
@@ -83,10 +98,7 @@ class POCLogger: NSObject {
     }
     
     func getDataToIgc() -> String {
-        
-        //let altitude = location?.altitude
-        
-    
+		
         let hours = NSCalendar.currentCalendar().component(.Hour, fromDate: NSDate())
         let minutes = NSCalendar.currentCalendar().component(.Minute, fromDate: NSDate())
         let seconds = NSCalendar.currentCalendar().component(.Second, fromDate: NSDate())
@@ -105,9 +117,7 @@ class POCLogger: NSObject {
         
         let altitude = (288.15 * (-1 + pow((((altitudeData?.pressure.doubleValue)! * 10) / 1013.25), 1/5.2561))) / -0.0065
         return altitude
-        
-    
-    }
+	}
 		
     func altitudeToString(number:Int) -> String {
         return String(format: "%05d", abs(number))
@@ -127,7 +137,7 @@ class POCLogger: NSObject {
         return String(format: "%02d", abs(number))
     }
 
-    //Funcao que retorna a string de latitude e longitude
+	/// Funcao que retorna a string de latitude e longitude
     func getLatLong() -> String {
         let latitude = self.location?.coordinate.latitude ?? 0
         let longitude = self.location?.coordinate.longitude ?? 0
@@ -145,6 +155,7 @@ class POCLogger: NSObject {
     }
     
     func startLogging() {
+		setFileName()
         logText = ""
         readBaseFile()
         timer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: #selector(log), userInfo: nil, repeats: true)
